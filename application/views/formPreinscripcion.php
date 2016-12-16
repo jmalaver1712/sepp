@@ -9,76 +9,147 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 
 <?= validation_errors('<span class="error">', '</span>') ?>
-<?= form_open("Preinscripcion/enviar") ?>
-<label>Cédula*:</label><br>
-<input type="number" name="cedula" value="<?= set_value("cedula") ?>" required min="0"><br>
+<?= form_open("Preinscripcion/enviar", "id='demo-form2' data-parsley-validate class='form-horizontal form-label-left'") ?>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="cedula">Cédula<span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="number" id="cedula" name="cedula" value="<?= set_value("cedula") ?>" required="required" class="form-control col-md-7 col-xs-12" min="0">
+    </div>
+</div>
 
-<label>Código Uniminuto*:</label><br>
-<input type="number" name="codigo" value="<?= set_value("codigo") ?>" required min="0"><br>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="codigo_uniminuto">Código Uniminuto<span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="number" id="codigo_uniminuto" name="codigo_uniminuto" value="<?= set_value("codigo_uniminuto") ?>" required="required" class="form-control col-md-7 col-xs-12" >
+    </div>
+</div>
 
-<label>Primer Nombre*:</label><br>
-<input type="text" name="nombre1" value="<?= set_value("nombre1") ?>" required><br>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre">Primer Nombre<span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="text" id="nombre" name="nombre" value="<?= set_value("nombre") ?>" required="required" class="form-control col-md-7 col-xs-12" >
+    </div>
+</div>
 
-<label>Segundo Nombre:</label><br>
-<input type="text" name="nombre2" value="<?= set_value("nombre2") ?>"><br>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="nombre2">Segundo Nombre
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="text" id="nombre2" name="nombre2" value="<?= set_value("nombre2") ?>" class="form-control col-md-7 col-xs-12" >
+    </div>
+</div>
 
-<label>Primer Apellido*:</label><br>
-<input type="text" name="apellido1" value="<?= set_value("apellido1") ?>" required><br>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="apellido">Primer Apellido<span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="text" id="apellido" name="apellido" value="<?= set_value("apellido") ?>" required="required" class="form-control col-md-7 col-xs-12" >
+    </div>
+</div>
 
-<label>Segundo Apellido:</label><br>
-<input type="text" name="apellido2" value="<?= set_value("apellido2") ?>"><br>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="apellido2">Segundo Apellido
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="text" id="apellido2" name="apellido2" value="<?= set_value("apellido2") ?>" class="form-control col-md-7 col-xs-12" >
+    </div>
+</div>
 
-<label>Primer Email*:</label><br>
-<input type="email" name="email1" value="<?= set_value("email1") ?>" required><br>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email1">Primer Email<span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="email" id="email1" name="email1" value="<?= set_value("email1") ?>" required="required" class="form-control col-md-7 col-xs-12" >
+    </div>
+</div>
 
-<label>Segundo Email:</label><br>
-<input type="email" name="email2" value="<?= set_value("email2") ?>"><br>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="email2">Segundo Email
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="email" id="email2" name="email2" value="<?= set_value("email2") ?>" class="form-control col-md-7 col-xs-12" >
+    </div>
+</div>
 
-<label>Teléfono Fijo:</label><br>
-<input type="number" name="telFijo" value="<?= set_value("telFijo") ?>" min="0"><br>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="telefono_fijo">Teléfono Fijo
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="number" id="telefono_fijo" name="telefono_fijo" value="<?= set_value("telefono_fijo") ?>" class="form-control col-md-7 col-xs-12" min="0">
+    </div>
+</div>
 
-<label>Celular:</label><br>
-<input type="number" name="celular" value="<?= set_value("celular") ?>" min="0"><br>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="celular">Celular
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <input type="number" id="celular" name="celular" value="<?= set_value("celular") ?>" class="form-control col-md-7 col-xs-12" min="0">
+    </div>
+</div>
 
-<label>Facultad*:</label><br>
-<select name="facultad" id="facultad" required>
-    <option value="">Seleccione la facultad</option>
-    <?php foreach ($facultades->result() as $value): ?>
-        <option value="<?= $value->id ?>" <?= set_select("facultad", $value->id); ?> ><?= $value->nombre ?></option>
-    <?php endforeach; ?>
-</select><br>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_facultad">Facultad<span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <select name="id_facultad" id="id_facultad" required="required" class="form-control col-md-7 col-xs-12">
+            <option value="">Seleccione la facultad</option>
+            <?php foreach ($facultades->result() as $value): ?>
+                <option value="<?= $value->id ?>" <?= set_select("id_facultad", $value->id); ?> ><?= $value->nombre ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+</div>
 
-<label>Programa*:</label><br>
-<select name="programa" id="programa" required>
-</select><br>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_programa">Programa<span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <select name="id_programa" id="id_programa" required="required" class="form-control col-md-7 col-xs-12">
+        </select>
+    </div>
+</div>
 
-<label>Sede:</label><br>
-<select name="sede" required>
-    <option value="">Seleccione la Sede</option>
-    <?php foreach ($sedes->result() as $value): ?>
-        <option value="<?= $value->id ?>" <?= set_select("sede", $value->id); ?> ><?= $value->nombre ?></option>
-    <?php endforeach; ?>
-</select><br>
-<button type="submit">Enviar</button>
+<div class="form-group">
+    <label class="control-label col-md-3 col-sm-3 col-xs-12" for="id_sede">Sede<span class="required">*</span>
+    </label>
+    <div class="col-md-6 col-sm-6 col-xs-12">
+        <select name="id_sede" id="id_sede" required="required" class="form-control col-md-7 col-xs-12">
+            <option value="">Seleccione la Sede</option>
+            <?php foreach ($sedes->result() as $value): ?>
+                <option value="<?= $value->id ?>" <?= set_select("id_sede", $value->id); ?> ><?= $value->nombre ?></option>
+            <?php endforeach; ?>
+        </select>
+    </div>
+</div>
+<div class="ln_solid"></div>
+<div class="form-group">
+    <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+        <button type="submit" class="btn btn-primary">Cancel</button>
+        <button type="submit" class="btn btn-success">Enviar</button>
+    </div>
+</div>
 
 <?= form_close() ?>
 <script>
     $(document).ready(function() {
-        $("#facultad").trigger("change");
+        $("#id_facultad").trigger("change");
     });
 
-    $("#facultad").change(function() {
-        var valor = $("#facultad").val();
-        $("#programa").empty();
+    $("#id_facultad").change(function() {
+        var valor = $("#id_facultad").val();
+        $("#id_programa").empty();
         if (valor !== "") {
             $.ajax({
                 url: "<?= base_url("preinscripcion") ?>" + "/traerPrograma/" + valor,
                 type: "POST",
                 dataType: "json",
                 success: function(msg) {
-                    $("#programa").append("<option value=''>Seleccione el programa</option>");
+                    $("#id_programa").append("<option value=''>Seleccione el programa</option>");
                     for (i = 0; i < msg.length; i++) {
-                        $("#programa").append("<option value='" + msg[i].id + "'>" + msg[i].nombre + "</option>");
+                        $("#id_programa").append("<option value='" + msg[i].id + "'>" + msg[i].nombre + "</option>");
                     }
                 }
 

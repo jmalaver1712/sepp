@@ -49,12 +49,12 @@ class Preinscripcion extends CI_Controller {
                 'rules' => 'trim|required|is_natural|is_unique[usuario.cedula]'
             ),
             array(
-                'field' => 'codigo',
+                'field' => 'codigo_uniminuto',
                 'label' => 'Código Uniminuto',
                 'rules' => 'trim|required|is_unique[usuario.codigo_uniminuto]|is_natural'
             ),
             array(
-                'field' => 'nombre1',
+                'field' => 'nombre',
                 'label' => 'Primer Nombre',
                 'rules' => 'trim|required|alpha'
             ),
@@ -64,7 +64,7 @@ class Preinscripcion extends CI_Controller {
                 'rules' => 'trim|alpha'
             ),
             array(
-                'field' => 'apellido1',
+                'field' => 'apellido',
                 'label' => 'Primer Apellido',
                 'rules' => 'trim|required|alpha'
             ),
@@ -84,7 +84,7 @@ class Preinscripcion extends CI_Controller {
                 'rules' => 'trim|valid_email'
             ),
             array(
-                'field' => 'telFijo',
+                'field' => 'telefono_fijo',
                 'label' => 'Teléfono Fijo',
                 'rules' => 'trim|is_natural|exact_length[7]'
             ),
@@ -94,17 +94,17 @@ class Preinscripcion extends CI_Controller {
                 'rules' => 'trim|exact_length[10]'
             ),
             array(
-                'field' => 'facultad',
+                'field' => 'id_facultad',
                 'label' => 'Facultad',
                 'rules' => 'trim|required|is_natural'
             ),
             array(
-                'field' => 'programa',
+                'field' => 'id_programa',
                 'label' => 'Programa',
                 'rules' => 'trim|required|is_natural'
             ),
             array(
-                'field' => 'sede',
+                'field' => 'id_sede',
                 'label' => 'Sede',
                 'rules' => 'trim|required|is_natural'
             )
@@ -133,21 +133,8 @@ class Preinscripcion extends CI_Controller {
     private function guardar($input) {
         $this->load->model("usuario_model");
         $rol = 1; /* Rol de estudiante */
-        $insert["cedula"] = $input["cedula"];
-        $insert["codigo_uniminuto"] = $input["codigo"];
-        $insert["nombre"] = $input["nombre1"];
-        $insert["nombre2"] = $input["nombre2"];
-        $insert["apellido"] = $input["apellido1"];
-        $insert["apellido2"] = $input["apellido2"];
-        $insert["email1"] = $input["email1"];
-        $insert["email2"] = $input["email2"];
-        $insert["telefono_fijo"] = $input["telFijo"];
-        $insert["celular"] = $input["celular"];
-        $insert["id_rol_usuario"] = $rol;
-        $insert["id_facultad"] = $input["facultad"];
-        $insert["id_programa"] = $input["programa"];
-        $insert["id_sede"] = $input["sede"];
-        $result = $this->usuario_model->insertUsuario($insert);
+        $input["id_rol_usuario"] = $rol;
+        $result = $this->usuario_model->insertUsuario($input);
         return $result;
     }
 
