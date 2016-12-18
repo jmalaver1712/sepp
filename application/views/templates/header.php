@@ -37,10 +37,10 @@
                             <span>Configuraci&oacute;n Global</span> <span class="caret"></span>
                         </a>
                         <ul class="dropdown-menu">
-                            <li><a href="<?= base_url()."/index.php/admin/profesor" ?>">Profesores</a></li>
-                            <li><a href="<?= base_url()."/index.php" ?>">Carreras</a></li>
-                            <li><a href="<?= base_url()."/index.php" ?>">Modalidades de Pr&aacute;ctica</a></li>
-                            <li><a href="<?= base_url()."/index.php" ?>">Usuarios</a></li>
+                            <li><a href="<?= base_url()."admin/profesor" ?>">Profesores</a></li>
+                            <li><a href="<?= base_url() ?>">Carreras</a></li>
+                            <li><a href="<?= base_url() ?>">Modalidades de Pr&aacute;ctica</a></li>
+                            <li><a href="<?= base_url() ?>">Usuarios</a></li>
                         </ul>
                     </li>
                     

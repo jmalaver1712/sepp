@@ -3,11 +3,12 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/sepp/css/bootstrap.min.css</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/sepp/application/views/templates/header.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/sepp/css/estilos.css</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/sepp/application/config/config.php</file>
-            <file>file:/Applications/XAMPP/xamppfiles/htdocs/sepp/application/views/private/batch_topup.php</file>
+            <file>file:/C:/xampp/htdocs/sepp/application/views/plantilla/content_1.php</file>
+            <file>file:/C:/xampp/htdocs/sepp/application/controllers/admin/Profesor.php</file>
+            <file>file:/C:/xampp/htdocs/sepp/application/views/admin/profesor/list.php</file>
+            <file>file:/C:/xampp/htdocs/sepp/application/views/plantilla/content.php</file>
+            <file>file:/C:/xampp/htdocs/sepp/application/views/plantilla/nav.php</file>
+            <file>file:/C:/xampp/htdocs/sepp/application/controllers/Test.php</file>
         </group>
     </open-files>
 </project-private>
