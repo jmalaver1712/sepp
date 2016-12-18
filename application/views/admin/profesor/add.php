@@ -165,7 +165,7 @@
                                 </div>
                             </div>
 
-                            <div class="form-group">
+                            <div class="form-group" id="id_programaDiv" hidden>
                                 <label>Programa<span class="required">*</span>
                                 </label>
                                 <div class="input-group">            
@@ -220,12 +220,14 @@
     $("#id_facultad").change(function() {
         var valor = $("#id_facultad").val();
         $("#id_programa").empty();
+        $("#id_programaDiv").hide();
         if (valor !== "") {
             $.ajax({
                 url: "<?= base_url("admin/profesor") ?>" + "/traerPrograma/" + valor,
                 type: "POST",
                 dataType: "json",
                 success: function(msg) {
+                    $("#id_programaDiv").show();
                     $("#id_programa").append("<option value=''>Seleccione el programa</option>");
                     for (i = 0; i < msg.length; i++) {
                         $("#id_programa").append("<option value='" + msg[i].id + "'>" + msg[i].nombre + "</option>");
