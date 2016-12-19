@@ -19,6 +19,16 @@ if ( ! function_exists('profesor_list_table'))
                 }else{
                     $html .= "<td class=\"text-success\">".$a->estado."</td>";
                 }
+                
+                $edit_btn = "<a class=\"btn btn-warning btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" href = \"".base_url()."/admin/profesor/edit/".$a->id."\" >
+                                <span class=\"glyphicon glyphicon-edit\"></span>
+                            </a>";
+                
+                $delete_btn = "<a class=\"btn btn-danger btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" href = \"".base_url()."/admin/profesor/remove/".$a->id."\" >
+                                <span class=\"glyphicon glyphicon-remove\"></span>
+                            </a>";
+                
+                $html .= "<td>$edit_btn&nbsp;$delete_btn</td>";
             $html .= "</tr>";
             
         }

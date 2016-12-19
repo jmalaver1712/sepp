@@ -1,3 +1,9 @@
+<?php 
+    $this->load->view("plantilla/head", ['titulo' => $titulo]);
+    $this->load->view("plantilla/header");
+    $this->load->view("plantilla/nav");
+?>
+
 <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <section class="content-header">
@@ -23,7 +29,7 @@
                     <div class="box-header">
                         <div class="col-md-2 col-md-offset-10 text-center">
                             <a href="<?= base_url() . "admin/profesor/add" ?>">
-                                <button id="back" class="btn btn-small btn-block"><span class="glyphicon glyphicon-plus-sign">&nbsp;</span>Nuevo</button>
+                                <button id="back" class="btn btn-small btn-success"><span class="glyphicon glyphicon-plus-sign">&nbsp;</span>Nuevo profesor</button>
                             </a>
                         </div>
                     </div>
@@ -35,6 +41,7 @@
                                     <th>Programa</th>
                                     <th>Facultad</th>
                                     <th>Estado</th>
+                                    <th>&nbsp;</th>
                                 </tr>
                             </thead>
                             <tfoot>
@@ -43,6 +50,7 @@
                                     <th>Programa</th>
                                     <th>Facultad</th>
                                     <th>Estado</th>
+                                    <th>&nbsp;</th>
                                 </tr>
                             </tfoot>
                             <tbody>
@@ -59,13 +67,7 @@
 
         </div><!-- /.row (main row) -->
 
-        <div class="row">
-            <div class="col-md-4 col-md-offset-4 text-center">
-                <form id="submitOLD" method="post" action="<?= base_url() . "index.php/admin/profesor/batch" ?>">
-                    <button id="btnsend" class="btn btn-success"><span class="glyphicon glyphicon-upload">&nbsp;</span>subir batch</button>
-                </form>
-            </div>
-        </div>
-
     </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
+
+<?php $this->load->view("plantilla/footer"); ?>

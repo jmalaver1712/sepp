@@ -213,9 +213,15 @@
     <script>
       $(function () {
         //DATATABLES
-        $("#data_table1").DataTable();
+        var dt_options = {"columnDefs": [ {
+                        "targets": [4],
+                        "orderable": false
+                        } ] };
+        $("#data_table1").DataTable(dt_options);
         $("#data_table2").DataTable();
-
+        
+        
+        
          //Initialize Select2 Elements
         $(".select2").select2();
 

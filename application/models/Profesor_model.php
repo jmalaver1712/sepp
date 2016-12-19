@@ -42,6 +42,23 @@ class Profesor_model extends CI_Model {
         return $result;
     }
     
+    public function get($id_profesor){
+        
+        $sql = "SELECT usuario.*, facultades.nombre AS facultad,programas.nombre  AS programa,sedes.nombre AS sede,estados_usuario.nombre AS estado 
+                FROM usuario
+                JOIN facultades ON facultades.id = usuario.id_facultad
+                JOIN programas ON programas.id = usuario.id_programa
+                JOIN sedes ON sedes.id = usuario.id_sede
+                JOIN estados_usuario ON estados_usuario.id = usuario.id_estado
+                WHERE usuario.id_rol_usuario = ? AND usuario.id = ? 
+                ORDER BY usuario.id ASC";
+        
+        $query = $this->db->query($sql,array(ID_ROL_PROFESOR,$id_profesor));
+        $result = $query->result();
+       
+        return $result;
+    }
+    
     public function getFields(){
         
         $sql = "SHOW COLUMNS FROM ".$this->tabla.";";
