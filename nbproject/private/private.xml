@@ -3,12 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/xampp/htdocs/sepp/application/views/plantilla/content_1.php</file>
             <file>file:/C:/xampp/htdocs/sepp/application/controllers/admin/Profesor.php</file>
             <file>file:/C:/xampp/htdocs/sepp/application/views/admin/profesor/list.php</file>
-            <file>file:/C:/xampp/htdocs/sepp/application/views/plantilla/content.php</file>
-            <file>file:/C:/xampp/htdocs/sepp/application/views/plantilla/nav.php</file>
-            <file>file:/C:/xampp/htdocs/sepp/application/controllers/Test.php</file>
+            <file>file:/C:/xampp/htdocs/sepp/application/config/routes.php</file>
+            <file>file:/C:/xampp/htdocs/sepp/application/controllers/User.php</file>
         </group>
     </open-files>
 </project-private>

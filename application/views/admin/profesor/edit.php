@@ -1,7 +1,7 @@
-<?php 
-    $this->load->view("plantilla/head", ['titulo' => $titulo]);
-    $this->load->view("plantilla/header");
-    $this->load->view("plantilla/nav");
+<?php
+$this->load->view("plantilla/head", ['titulo' => $titulo]);
+$this->load->view("plantilla/header");
+$this->load->view("plantilla/nav");
 ?>
 
 <div class="content-wrapper">
@@ -35,18 +35,18 @@
                             </a>
                         </div>
                     </div>
-                    
-                    
+
+
                     <?= validation_errors('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong><i class="icon fa fa-check"></i>', '</strong>
                         </div>') ?>
 
                     <?= form_open("admin/profesor/update") ?>
-                    
-                        <!-- ////   LOAD FORM    ////////////////////--> 
-                        <?php $this->load->view("admin/profesor/partes/form_profesor", $profesor); ?>
-                    
+
+                    <!-- ////   LOAD FORM    ////////////////////--> 
+                    <?php $this->load->view("admin/profesor/partes/form_profesor", $profesor); ?>
+
                     <?= form_close() ?>
-                    
+
 
                 </div><!-- /.box -->
 
@@ -74,9 +74,8 @@
                 dataType: "json",
                 success: function(msg) {
                     $("#id_programaDiv").show();
-                    $("#id_programa").append("<option value=''>Seleccione el programa</option>");
                     for (i = 0; i < msg.length; i++) {
-                        $("#id_programa").append("<option value='" + msg[i].id + "'>" + msg[i].nombre + "</option>");
+                        $("#id_programa").append("<option value='" + msg[i].id + "'>" + msg[i].nombre + "</option>").trigger("change");
                     }
                 }
 

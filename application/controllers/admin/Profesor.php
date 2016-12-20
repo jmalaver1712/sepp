@@ -35,11 +35,10 @@ class Profesor extends CI_Controller {
         $lista_profesores = $this->profesor_model->getAll();
         //die(print_r($lista_profesores,true));
         $html = profesor_list_table($lista_profesores);
-        
+
         $data ["titulo"] = "Lista de profsores - SEPP";
         $data ["html"] = $html;
         $this->load->view("admin/profesor/list", $data);
-        
     }
 
     public function add() {
@@ -48,46 +47,43 @@ class Profesor extends CI_Controller {
             $this->session->set_flashdata('error', "Debe autenticarse para ingresar a &eacute;sta opci&oacute;n.");
             redirect('user/login');
         }
-        
+
         $this->load->model("facultades_model");
         $this->load->model("sedes_model");
 
         $data["sedes"] = $this->sedes_model->SelectAllSedes();
         $data["facultades"] = $this->facultades_model->SelectAllFacultades();
         $data ["titulo"] = "Agregar un nuevo profesor - SEPP";
-        
+
         $this->load->view("admin/profesor/add", $data);
-        
     }
-    
+
     public function edit($id) {
 
         if ($this->user_model->isLoggedIn() !== TRUE) {
             $this->session->set_flashdata('error', "Debe autenticarse para ingresar a &eacute;sta opci&oacute;n.");
             redirect('user/login');
         }
-        
+
         $this->load->model("facultades_model");
         $this->load->model("sedes_model");
-        
+
         $data["profesor"] = get_object_vars($this->profesor_model->get($id)[0]);
         $data["sedes"] = $this->sedes_model->SelectAllSedes();
         $data["facultades"] = $this->facultades_model->SelectAllFacultades();
         $data ["titulo"] = "Editar un profesor - SEPP";
-        
+
         $this->load->view("admin/profesor/edit", $data);
-        
     }
-    
+
     public function remove($id) {
 
         if ($this->user_model->isLoggedIn() !== TRUE) {
             $this->session->set_flashdata('error', "Debe autenticarse para ingresar a &eacute;sta opci&oacute;n.");
             redirect('user/login');
         }
-        
+
         echo "Falta crear la vista para borrar al profesor $id";
-        
     }
 
     public function traerPrograma($idFacultad = "") {

@@ -20,11 +20,11 @@ if ( ! function_exists('profesor_list_table'))
                     $html .= "<td class=\"text-success\">".$a->estado."</td>";
                 }
                 
-                $edit_btn = "<a class=\"btn btn-warning btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" href = \"".base_url()."/admin/profesor/edit/".$a->id."\" >
+                $edit_btn = "<a class=\"btn btn-warning btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" href = \"".base_url()."admin/profesor/edit/".$a->id."\" >
                                 <span class=\"glyphicon glyphicon-edit\"></span>
                             </a>";
                 
-                $delete_btn = "<a class=\"btn btn-danger btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" href = \"".base_url()."/admin/profesor/remove/".$a->id."\" >
+                $delete_btn = "<a class=\"btn btn-danger btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" href = \"".base_url()."admin/profesor/remove/".$a->id."\" >
                                 <span class=\"glyphicon glyphicon-remove\"></span>
                             </a>";
                 
