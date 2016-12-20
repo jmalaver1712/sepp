@@ -5,7 +5,7 @@
         <!-- /.search form -->
         <!-- sidebar menu: : style can be found in sidebar.less -->
         <ul class="sidebar-menu">
-            <li class="header">NOMBRE USUARIO</li>
+            <li class="header">Hola! <?= $this->session->userdata('nombre') ?></li>
             <li class="treeview active">
                 <a href="#">
                     <i class="fa fa-dashboard"></i> <span>Configuración Global</span> <i class="fa fa-angle-left pull-right"></i>

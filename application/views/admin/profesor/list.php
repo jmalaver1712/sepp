@@ -33,7 +33,7 @@
                             </a>
                         </div>
                     </div>
-                    <div class="box-body chat" id="chat-box">
+                    <div class="box-body chat" id="chat-box" style="overflow: auto">
                         <table id="data_table1" class="table table-bordered table-striped">
                             <thead>
                                 <tr>
