@@ -76,6 +76,16 @@ class Profesor_model extends CI_Model {
         
     }
     
+    public function delete($data) {
+        
+        extract($data);
+        $this->db->where('id', $id);
+        $this->db->where('id_rol_usuario', ID_ROL_PROFESOR);
+        $this->db->update($this->tabla, ['id_estado' => "10"]);
+        return true;
+        
+    }
+    
     public function getFields(){
         
         $sql = "SHOW COLUMNS FROM ".$this->tabla.";";

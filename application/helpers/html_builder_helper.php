@@ -24,9 +24,9 @@ if ( ! function_exists('profesor_list_table'))
                                 <span class=\"glyphicon glyphicon-edit\"></span>
                             </a>";
                 
-                $delete_btn = "<a class=\"btn btn-danger btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" href = \"".base_url()."admin/profesor/remove/".$a->id."\" >
+                $delete_btn = "<button class=\"btn btn-danger btn-xs remove\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Deshabilitar\" id=\"$a->id\" >
                                 <span class=\"glyphicon glyphicon-remove\"></span>
-                            </a>";
+                            </button>";
                 
                 $html .= "<td>$edit_btn&nbsp;$delete_btn</td>";
             $html .= "</tr>";
@@ -35,4 +35,29 @@ if ( ! function_exists('profesor_list_table'))
         
         return $html;
     }   
+    
+    
+    if ( ! function_exists('show_notification'))
+    {
+        function show_notification()
+        {
+            $CI = & get_instance();  //get instance, access the CI superobject
+            $html = "";
+            
+            if($CI->session->flashdata('error') !== FALSE && $CI->session->flashdata('error') != ""){
+                
+                $html = "<div class=\"well well-sm alert-danger\">".$CI->session->flashdata('error')."</div>";
+                
+            }elseif($CI->session->flashdata('message') !== FALSE && $CI->session->flashdata('message') != ""){
+                
+                $html = "<div class=\"well well-sm alert-info\">".$CI->session->flashdata('message')."</div>";
+            
+            }
+            
+            return $html;
+            
+        }
+    }
+    
+    
 }

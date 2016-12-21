@@ -38,9 +38,7 @@
                     <?= validation_errors('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong><i class="icon fa fa-check"></i>', '</strong>
                         </div>') ?>
                     
-                    <?= form_open("admin/profesor/insert") ?>
-                        
-                        <input type="hidden" id="id_rol_usuario" name="id_rol_usuario" value="<?= ID_ROL_PROFESOR ?>" >
+                    <?= form_open("admin/profesor/add") ?>
                         <!-- ////   LOAD FORM    ////////////////////--> 
                         <?php $this->load->view("admin/profesor/partes/form_profesor"); ?>
                     

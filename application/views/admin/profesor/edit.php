@@ -36,11 +36,12 @@ $this->load->view("plantilla/nav");
                         </div>
                     </div>
 
+                    
 
                     <?= validation_errors('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong><i class="icon fa fa-check"></i>', '</strong>
                         </div>') ?>
-
-                    <?= form_open("admin/profesor/update") ?>
+                    
+                    <?= form_open("admin/profesor/edit/".@$profesor['id'] ) ?>
                     
                     <!-- ////   LOAD FORM    ////////////////////--> 
                     <?php $this->load->view("admin/profesor/partes/form_profesor", $profesor); ?>

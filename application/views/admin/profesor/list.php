@@ -24,10 +24,14 @@
         <div class="row">
             <!-- right col -->
             <section class="col-lg-12 connectedSortable">
+                
                 <!-- Chat box -->
                 <div class="box">
                     <div class="box-header">
-                        <div class="col-md-2 col-md-offset-10 text-center">
+                        <div class="col-md-10">
+                            <?= show_notification(); ?>
+                        </div>
+                        <div class="col-md-2 text-center">
                             <a href="<?= base_url() . "admin/profesor/add" ?>">
                                 <button id="back" class="btn btn-small btn-success"><span class="glyphicon glyphicon-plus-sign">&nbsp;</span>Nuevo profesor</button>
                             </a>
@@ -70,4 +74,62 @@
     </section><!-- /.content -->
 </div><!-- /.content-wrapper -->
 
+<!-- Modal -->
+<div class="modal fade" id="remove_modal" role="dialog">
+    <div class="modal-dialog">
+        <!-- Modal content-->
+        <div class="modal-content">
+            <div class="modal-body" style="padding:40px 50px;">
+                <div class="row" align="center">
+                    <h3>&iquest;Confirma deshabilitar al usuario?</h3>
+                    <div id="msj" class="alert alert-danger hide" role="alert"></div>
+                    <div class="form-group">
+                        <input type="hidden" id="remove_id" value="" />
+                        <button id="btn_cancelar" class="btn btn-default"><span class="glyphicon glyphicon-repeat">&nbsp</span>Cancelar</button>
+                        <button id="btn_borrar" class="btn btn-danger"><span class="glyphicon glyphicon-remove-circle">&nbsp</span>Deshabilitar</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+
 <?php $this->load->view("plantilla/footer"); ?>
+
+
+<script>
+    $(".remove").click(function() {
+
+        $('#remove_modal').modal({
+                keyboard : false,
+                backdrop : 'static'
+        });
+
+        document.getElementById("remove_id").value = this.id;
+
+    });
+</script>
+
+<script>
+    
+    $('#btn_borrar').click(function(e) {
+        
+        var id_usuario = document.getElementById("remove_id").value;
+        
+        $.ajax({
+                type : 'POST',
+                url : "<?= base_url()."admin/profesor/remove/" ?>"+id_usuario,
+                dataType : 'json',
+                success : function(data) {
+                    window.location.href = "<?= base_url()."admin/profesor" ?>";
+                }
+        });
+    });
+    
+    $('#btn_cancelar').click(function() {
+        $('#remove_modal').modal('hide');
+    });
+    
+</script>
