@@ -5,6 +5,8 @@
         <strong><i class="icon fa fa-check"></i> Profesor creado correctamente!</strong>
     </div>
     <div class="col-md-6">
+        <input type="hidden" id="id" name="id" value="<?= set_value('id', @$id); ?>" >
+        <input type="hidden" id="id_rol_usuario" name="id_rol_usuario" value="<?= set_value('id_rol_usuario', @$id_rol_usuario); ?>" >
         <div class="form-group">
             <label>C&eacute;dula<span class="required">*</span></label>
             <div class="input-group">

@@ -59,6 +59,23 @@ class Profesor_model extends CI_Model {
         return $result;
     }
     
+    public function insert($data) {
+        
+        $this->db->insert($this->tabla,$data);
+        return $this->db->affected_rows();
+        
+    }
+    
+    public function update($data) {
+        
+        extract($data);
+        $this->db->where('id', $id);
+        $this->db->where('id_rol_usuario', ID_ROL_PROFESOR);
+        $this->db->update($this->tabla, $data);
+        return true;
+        
+    }
+    
     public function getFields(){
         
         $sql = "SHOW COLUMNS FROM ".$this->tabla.";";

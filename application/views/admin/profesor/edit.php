@@ -41,7 +41,7 @@ $this->load->view("plantilla/nav");
                         </div>') ?>
 
                     <?= form_open("admin/profesor/update") ?>
-
+                    
                     <!-- ////   LOAD FORM    ////////////////////--> 
                     <?php $this->load->view("admin/profesor/partes/form_profesor", $profesor); ?>
 

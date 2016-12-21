@@ -85,6 +85,49 @@ class Profesor extends CI_Controller {
 
         echo "Falta crear la vista para borrar al profesor $id";
     }
+    
+    public function insert(){
+        
+        $_POST['id_rol_usuario'] = ID_ROL_PROFESOR;
+        
+        $this->form_validation->set_rules($this->user_model->getValidationRules());
+        
+        if ($this->form_validation->run() !== FALSE) {
+            if($this->profesor_model->insert($this->input->post()) === 1){
+                $this->session->set_flashdata('message', "Usuario creado exitosamente.");
+                redirect('admin/profesor');
+            }else{
+                $this->session->set_flashdata('error', "Error insesperado al crear el usuario.");
+                redirect('admin/profesor');
+            }
+        }else{
+            redirect('admin/profesor/add');
+            
+        }
+        
+        
+        
+        
+    }
+    
+    public function update(){
+        $_POST['id_rol_usuario'] = ID_ROL_PROFESOR;
+        
+        $this->form_validation->set_rules($this->user_model->getValidationRules());
+        
+        if ($this->form_validation->run() !== FALSE) {
+            if($this->profesor_model->update($this->input->post())){
+                $this->session->set_flashdata('message', "Usuario actualizado exitosamente.");
+                redirect('admin/profesor');
+            }else{
+                $this->session->set_flashdata('error', "Error insesperado al actualizar el usuario.");
+                redirect('admin/profesor');
+            }
+        }else{
+            redirect('admin/profesor/edit/'.$this->input->post('id'));
+        }
+        
+    }
 
     public function traerPrograma($idFacultad = "") {
         $peticion = strtolower($this->input->server("HTTP_X_REQUESTED_WITH"));
