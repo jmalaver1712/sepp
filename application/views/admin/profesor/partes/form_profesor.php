@@ -1,5 +1,5 @@
 <input type="hidden" id="id_rol_usuario" name="id_rol_usuario" value="<?= ID_ROL_PROFESOR ?>" >
-<input type="hidden" id="id" name="id" value="<?= isset($id) ?>" >
+<input type="hidden" id="id" name="id" value="<?= @$id ?>" >
 <div class="box-body">
     <div class="col-md-6">
         <div class="form-group">
