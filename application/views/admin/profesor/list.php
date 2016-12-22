@@ -1,7 +1,7 @@
-<?php 
-    $this->load->view("plantilla/head", ['titulo' => $titulo]);
-    $this->load->view("plantilla/header");
-    $this->load->view("plantilla/nav");
+<?php
+$this->load->view("plantilla/head", ['titulo' => $titulo]);
+$this->load->view("plantilla/header");
+$this->load->view("plantilla/nav");
 ?>
 
 <div class="content-wrapper">
@@ -24,7 +24,7 @@
         <div class="row">
             <!-- right col -->
             <section class="col-lg-12 connectedSortable">
-                
+
                 <!-- Chat box -->
                 <div class="box">
                     <div class="box-header">
@@ -94,7 +94,7 @@
     </div>
 </div>
 
-    
+
 
 <?php $this->load->view("plantilla/footer"); ?>
 
@@ -103,8 +103,8 @@
     $(".remove").click(function() {
 
         $('#remove_modal').modal({
-                keyboard : false,
-                backdrop : 'static'
+            keyboard: false,
+            backdrop: 'static'
         });
 
         document.getElementById("remove_id").value = this.id;
@@ -113,23 +113,23 @@
 </script>
 
 <script>
-    
+
     $('#btn_borrar').click(function(e) {
-        
+
         var id_usuario = document.getElementById("remove_id").value;
-        
+
         $.ajax({
-                type : 'POST',
-                url : "<?= base_url()."admin/profesor/remove/" ?>"+id_usuario,
-                dataType : 'json',
-                success : function(data) {
-                    window.location.href = "<?= base_url()."admin/profesor" ?>";
-                }
+            type: 'POST',
+            url: "<?= base_url("admin/profesor/remove/") ?>" + id_usuario,
+            dataType: 'json',
+            success: function(data) {
+                window.location.href = "<?= base_url("admin/profesor") ?>";
+            }
         });
     });
-    
+
     $('#btn_cancelar').click(function() {
         $('#remove_modal').modal('hide');
     });
-    
+
 </script>

@@ -1,4 +1,5 @@
 <input type="hidden" id="id_rol_usuario" name="id_rol_usuario" value="<?= ID_ROL_PROFESOR ?>" >
+<input type="hidden" id="id" name="id" value="<?= isset($id) ?>" >
 <div class="box-body">
     <div class="col-md-6">
         <div class="form-group">
@@ -101,7 +102,7 @@
                     <option value="">Seleccione la facultad</option>
                     <?php foreach ($facultades->result() as $value): ?>
                         <?php $attribFacultad = ($value->id === @$id_facultad) ? TRUE : '' ?>
-                        <option value="<?= $value->id ?>" <?= set_select("id_facultad", @$id_facultad, $attribFacultad); ?> ><?= $value->nombre ?></option>
+                        <option value="<?= $value->id ?>" <?= set_select("id_facultad", $value->id, $attribFacultad); ?> ><?= $value->nombre ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>
@@ -119,11 +120,6 @@
             </div>
         </div>
 
-        <?php if (isset($id_programa)): ?>
-            <script>
-                $("#id_programa").val(<?= $id_programa ?>);
-            </script>
-        <?php endif; ?>
 
         <div class="form-group">
             <label>Sede<span class="required">*</span>
@@ -136,7 +132,7 @@
                     <option value="">Seleccione la Sede</option>
                     <?php foreach ($sedes->result() as $value): ?>
                         <?php $attribSede = ($value->id === @$id_sede) ? TRUE : '' ?>
-                        <option value="<?= $value->id ?>" <?= set_select("id_sede", @$id_sede, $attribSede); ?> ><?= $value->nombre ?></option>
+                        <option value="<?= $value->id ?>" <?= set_select("id_sede", $value->id, $attribSede); ?> ><?= $value->nombre ?></option>
                     <?php endforeach; ?>
                 </select>
             </div>

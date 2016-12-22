@@ -47,80 +47,77 @@ class Profesor extends CI_Controller {
             $this->session->set_flashdata('error', "Debe autenticarse para ingresar a &eacute;sta opci&oacute;n.");
             redirect('user/login');
         }
-        
+
         $this->load->model("facultades_model");
         $this->load->model("sedes_model");
-        
+
         $data["sedes"] = $this->sedes_model->SelectAllSedes();
         $data["facultades"] = $this->facultades_model->SelectAllFacultades();
         $data ["titulo"] = "Agregar un nuevo profesor - SEPP";
 
-        
-        if($_SERVER['REQUEST_METHOD'] !== "POST"){
-            
+
+        if ($_SERVER['REQUEST_METHOD'] !== "POST") {
+
             $this->load->view("admin/profesor/add", $data);
-            
-        }else{
-            
+        } else {
+
             $this->form_validation->set_rules($this->user_model->getValidationRules());
-        
+
             if ($this->form_validation->run() === FALSE) {
 
                 $this->load->view("admin/profesor/add", $data);
-
             } else {
 
-                if ($this->profesor_model->insert($this->input->post())){
+                if ($this->profesor_model->insert($this->input->post())) {
 
-                    $this->session->set_flashdata('message', "Usuario <b>".$this->input->post('nombre')." ".$this->input->post('apellido')."</b> exitosamente.");
+                    $this->session->set_flashdata('message', "Usuario <b>" . $this->input->post('nombre') . " " . $this->input->post('apellido') . "</b> creado exitosamente.");
                     redirect('admin/profesor');
-                }else{
+                } else {
                     $this->session->set_flashdata('message', "Usuario actualizado exitosamente.");
                     redirect('admin/profesor');
                 }
             }
-            
         }
-        
     }
 
     public function edit($id = "") {
-        
+
         if ($this->user_model->isLoggedIn() !== TRUE) {
             $this->session->set_flashdata('error', "Debe autenticarse para ingresar a &eacute;sta opci&oacute;n.");
             redirect('user/login');
         }
-        
+
         $this->load->model("facultades_model");
         $this->load->model("sedes_model");
-
+        $datosProfesor = $this->profesor_model->get($id);
+        if($datosProfesor == NULL){
+            redirect('admin/profesor', 'refresh');
+        }
         $data["sedes"] = $this->sedes_model->SelectAllSedes();
         $data["facultades"] = $this->facultades_model->SelectAllFacultades();
         $data ["titulo"] = "Editar un profesor - SEPP";
-        $data["profesor"] = get_object_vars($this->profesor_model->get($id)[0]);
-        
-        if($_SERVER['REQUEST_METHOD'] !== "POST"){
-            
+        $data["profesor"] = get_object_vars($datosProfesor[0]);
+
+        if ($_SERVER['REQUEST_METHOD'] !== "POST") {
+
             $this->load->view("admin/profesor/edit", $data);
-            
-        }else{
-            
-            $this->form_validation->set_rules($this->user_model->getValidationRules());
-        
+        } else {
+            $regla = "update";
+            $this->form_validation->set_rules($this->user_model->getValidationRules($regla));
+
             if ($this->form_validation->run() === FALSE) {
 
                 $this->load->view("admin/profesor/edit", $data);
-
             } else {
 
-                if ($this->profesor_model->update($this->input->post())){
+                if ($this->profesor_model->update($this->input->post())) {
 
-                    $this->load->view("admin/profesor/edit", $data);
-                }else{
                     $this->session->set_flashdata('message', "Usuario actualizado exitosamente.");
                     redirect('admin/profesor');
+                } else {
+                    $this->load->view("admin/profesor/edit", $data);
                 }
-            }   
+            }
         }
     }
 
@@ -130,19 +127,17 @@ class Profesor extends CI_Controller {
             $this->session->set_flashdata('error', "Debe autenticarse para ingresar a &eacute;sta opci&oacute;n.");
             redirect('user/login');
         }
-        if($this->input->is_ajax_request())
-        {
+        if ($this->input->is_ajax_request()) {
             $this->profesor_model->delete(['id' => $id]);
             $this->session->set_flashdata('error', "Usuario deshabilitado exitosamente.");
-            redirect('admin/profesor');
-        }else{
+            echo json_encode("correcto");
+//            redirect('admin/profesor');
+        } else {
             $this->session->set_flashdata('error', "Petici&oacute; no permitida.");
             redirect('admin/profesor');
         }
-        
     }
-    
-    
+
     public function traerPrograma($idFacultad = "") {
         $peticion = strtolower($this->input->server("HTTP_X_REQUESTED_WITH"));
         if ($idFacultad !== "" && $peticion === "xmlhttprequest") {

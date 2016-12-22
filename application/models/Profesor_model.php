@@ -67,7 +67,6 @@ class Profesor_model extends CI_Model {
     }
     
     public function update($data) {
-        
         extract($data);
         $this->db->where('id', $id);
         $this->db->where('id_rol_usuario', ID_ROL_PROFESOR);

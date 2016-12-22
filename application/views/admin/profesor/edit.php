@@ -36,13 +36,13 @@ $this->load->view("plantilla/nav");
                         </div>
                     </div>
 
-                    
+
 
                     <?= validation_errors('<div class="alert alert-danger alert-dismissible"><button type="button" class="close" data-dismiss="alert" aria-hidden="true">×</button><strong><i class="icon fa fa-check"></i>', '</strong>
                         </div>') ?>
-                    
-                    <?= form_open("admin/profesor/edit/".@$profesor['id'] ) ?>
-                    
+
+                    <?= form_open("admin/profesor/edit/" . @$profesor['id']) ?>
+
                     <!-- ////   LOAD FORM    ////////////////////--> 
                     <?php $this->load->view("admin/profesor/partes/form_profesor", $profesor); ?>
 
@@ -75,8 +75,10 @@ $this->load->view("plantilla/nav");
                 dataType: "json",
                 success: function(msg) {
                     $("#id_programaDiv").show();
+                    $("#id_programa").append("<option value=''>Seleccione el programa</option>");
                     for (i = 0; i < msg.length; i++) {
-                        $("#id_programa").append("<option value='" + msg[i].id + "'>" + msg[i].nombre + "</option>").trigger("change");
+                        var selected = (msg[i].id == <?= $profesor["id_programa"] ?>) ? "selected=\"selected\"" : '';
+                        $("#id_programa").append("<option value='" + msg[i].id + "'" + selected + ">" + msg[i].nombre + "</option>").trigger("change");
                     }
                 }
 
