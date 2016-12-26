@@ -73,7 +73,7 @@ class Profesor extends CI_Controller {
                     $this->session->set_flashdata('message', "Usuario <b>" . $this->input->post('nombre') . " " . $this->input->post('apellido') . "</b> creado exitosamente.");
                     redirect('admin/profesor');
                 } else {
-                    $this->session->set_flashdata('message', "Usuario actualizado exitosamente.");
+                    $this->session->set_flashdata('error', "Ocurrio un error, intente nuevamente.");
                     redirect('admin/profesor');
                 }
             }
@@ -131,7 +131,6 @@ class Profesor extends CI_Controller {
             $this->profesor_model->delete(['id' => $id]);
             $this->session->set_flashdata('error', "Usuario deshabilitado exitosamente.");
             echo json_encode("correcto");
-//            redirect('admin/profesor');
         } else {
             $this->session->set_flashdata('error', "Petici&oacute; no permitida.");
             redirect('admin/profesor');
@@ -139,8 +138,7 @@ class Profesor extends CI_Controller {
     }
 
     public function traerPrograma($idFacultad = "") {
-        $peticion = strtolower($this->input->server("HTTP_X_REQUESTED_WITH"));
-        if ($idFacultad !== "" && $peticion === "xmlhttprequest") {
+        if ($idFacultad !== "" && $this->input->is_ajax_request()) {
             $this->load->model("programas_model");
             $programas = $this->programas_model->SelectProgramasByFacultad($idFacultad);
             echo json_encode($programas->result());

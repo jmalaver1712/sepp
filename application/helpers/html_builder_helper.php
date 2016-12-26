@@ -8,8 +8,6 @@ if (!function_exists('profesor_list_table')) {
     function profesor_list_table($data) {
         //setlocale(LC_MONETARY, 'en_US');
         $html = "";
-
-        $i = 0;
         foreach ($data as $a) {
 
             $html .= "<tr>";
@@ -30,7 +28,7 @@ if (!function_exists('profesor_list_table')) {
                                 <span class=\"glyphicon glyphicon-remove\"></span>
                             </button>";
             } else {
-                 $option_btn = "<button class=\"btn btn-success btn-xs active\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Habilitar\" id=\"$a->id\" >
+                $option_btn = "<button class=\"btn btn-success btn-xs active\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Habilitar\" id=\"$a->id\" >
                                 <span class=\"glyphicon glyphicon-check\"></span>
                             </button>";
             }
@@ -41,22 +39,59 @@ if (!function_exists('profesor_list_table')) {
         return $html;
     }
 
-    if (!function_exists('show_notification')) {
+}
 
-        function show_notification() {
-            $CI = & get_instance();  //get instance, access the CI superobject
-            $html = "";
+if (!function_exists('show_notification')) {
 
-            if ($CI->session->flashdata('error') !== FALSE && $CI->session->flashdata('error') != "") {
+    function show_notification() {
+        $CI = & get_instance();  //get instance, access the CI superobject
+        $html = "";
 
-                $html = "<div class=\"well well-sm alert-info\">" . $CI->session->flashdata('error') . "</div>";
-            } elseif ($CI->session->flashdata('message') !== FALSE && $CI->session->flashdata('message') != "") {
+        if ($CI->session->flashdata('error') !== FALSE && $CI->session->flashdata('error') != "") {
 
-                $html = "<div class=\"well well-sm alert-info\">" . $CI->session->flashdata('message') . "</div>";
-            }
+            $html = "<div class=\"well well-sm alert-info\">" . $CI->session->flashdata('error') . "</div>";
+        } elseif ($CI->session->flashdata('message') !== FALSE && $CI->session->flashdata('message') != "") {
 
-            return $html;
+            $html = "<div class=\"well well-sm alert-info\">" . $CI->session->flashdata('message') . "</div>";
         }
 
+        return $html;
     }
+
+}
+
+if (!function_exists('modalidad_list_table')) {
+
+    function modalidad_list_table($data) {
+        $html = "";
+        foreach ($data as $a) {
+
+            $html .= "<tr>";
+            $html .= "<td>" . $a->nombre . "</td>";
+            $html .= "<td>" . $a->numero_visitas . "</td>";
+            if ($a->activo !== "1") {
+                $html .= "<td class=\"text-danger\">Inactiva</td>";
+            } else {
+                $html .= "<td class=\"text-success\">Activa</td>";
+            }
+
+            $edit_btn = "<a class=\"btn btn-warning btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" href = \"" . base_url("admin/modalidad/edit/") . $a->id . "\" >
+                                <span class=\"glyphicon glyphicon-edit\"></span>
+                            </a>";
+            if ($a->activo !== "0" && $a->activo !== "0") {
+                $option_btn = "<button class=\"btn btn-danger btn-xs remove\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Deshabilitar\" id=\"$a->id\" >
+                                <span class=\"glyphicon glyphicon-remove\"></span>
+                            </button>";
+            } else {
+                $option_btn = "<button class=\"btn btn-success btn-xs active\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Habilitar\" id=\"$a->id\" >
+                                <span class=\"glyphicon glyphicon-check\"></span>
+                            </button>";
+            }
+            $html .= "<td>$edit_btn&nbsp;$option_btn</td>";
+            $html .= "</tr>";
+        }
+
+        return $html;
+    }
+
 }
