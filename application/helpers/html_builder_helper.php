@@ -7,6 +7,7 @@ if (!function_exists('profesor_list_table')) {
 
     function profesor_list_table($data) {
         //setlocale(LC_MONETARY, 'en_US');
+        //print_r($data);
         $html = "";
         foreach ($data as $a) {
 
@@ -14,6 +15,7 @@ if (!function_exists('profesor_list_table')) {
             $html .= "<td>" . $a->nombre . " " . $a->apellido . "</td>";
             $html .= "<td>" . $a->programa . "</td>";
             $html .= "<td>" . $a->facultad . "</td>";
+            
             if ($a->estado !== "activo") {
                 $html .= "<td class=\"text-danger\">" . $a->estado . "</td>";
             } else {
@@ -28,7 +30,7 @@ if (!function_exists('profesor_list_table')) {
                                 <span class=\"glyphicon glyphicon-remove\"></span>
                             </button>";
             } else {
-                $option_btn = "<button class=\"btn btn-success btn-xs active\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Habilitar\" id=\"$a->id\" >
+                $option_btn = "<button class=\"btn btn-success btn-xs enable\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Habilitar\" id=\"$a->id\" >
                                 <span class=\"glyphicon glyphicon-check\"></span>
                             </button>";
             }
@@ -40,6 +42,90 @@ if (!function_exists('profesor_list_table')) {
     }
 
 }
+
+if (!function_exists('categoria_aptitud_list_table')) {
+
+    function categoria_aptitud_list_table($data) {
+        //setlocale(LC_MONETARY, 'en_US');
+        //print_r($data);
+        $html = "";
+        foreach ($data as $a) {
+
+            $html .= "<tr>";
+            $html .= "<td>" . $a->nombre . "</td>";
+            $html .= "<td>" . $a->descripcion . "</td>";
+            $html .= "<td>" . $a->programa . "</td>";
+            
+            if ($a->activo !== "1") {
+                $html .= "<td class=\"text-danger\">no</td>";
+            } else {
+                $html .= "<td class=\"text-success\">si</td>";
+            }
+
+            $edit_btn = "<a class=\"btn btn-warning btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" href = \"" . base_url() . "admin/categoria_aptitud/edit/" . $a->id . "\" >
+                                <span class=\"glyphicon glyphicon-edit\"></span>
+                            </a>";
+            
+            if ($a->activo == "1") {
+                $option_btn = "<button class=\"btn btn-danger btn-xs remove\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Deshabilitar\" id=\"$a->id\" >
+                                <span class=\"glyphicon glyphicon-remove\"></span>
+                            </button>";
+            } else {
+                $option_btn = "<button class=\"btn btn-success btn-xs enable\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Habilitar\" id=\"$a->id\" >
+                                <span class=\"glyphicon glyphicon-check\"></span>
+                            </button>";
+            }
+            $html .= "<td>$edit_btn&nbsp;$option_btn</td>";
+            $html .= "</tr>";
+        }
+
+        return $html;
+    }
+
+}
+
+if (!function_exists('aptitud_profesional_list_table')) {
+
+    function aptitud_profesional_list_table($data) {
+        //setlocale(LC_MONETARY, 'en_US');
+        //print_r($data);
+        $html = "";
+        foreach ($data as $a) {
+
+            $html .= "<tr>";
+            $html .= "<td>" . $a->nombre . "</td>";
+            $html .= "<td>" . $a->descripcion . "</td>";
+            $html .= "<td>" . $a->categoria . "</td>";
+            
+            if ($a->activo !== "1") {
+                $html .= "<td class=\"text-danger\">no</td>";
+            } else {
+                $html .= "<td class=\"text-success\">si</td>";
+            }
+
+            $edit_btn = "<a class=\"btn btn-warning btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" href = \"" . base_url() . "admin/aptitud_profesional/edit/" . $a->id . "\" >
+                                <span class=\"glyphicon glyphicon-edit\"></span>
+                            </a>";
+            
+            if ($a->activo == "1") {
+                $option_btn = "<button class=\"btn btn-danger btn-xs remove\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Deshabilitar\" id=\"$a->id\" >
+                                <span class=\"glyphicon glyphicon-remove\"></span>
+                            </button>";
+            } else {
+                $option_btn = "<button class=\"btn btn-success btn-xs enable\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Habilitar\" id=\"$a->id\" >
+                                <span class=\"glyphicon glyphicon-check\"></span>
+                            </button>";
+            }
+            $html .= "<td>$edit_btn&nbsp;$option_btn</td>";
+            $html .= "</tr>";
+        }
+
+        return $html;
+    }
+
+}
+
+
 
 if (!function_exists('show_notification')) {
 
@@ -78,7 +164,7 @@ if (!function_exists('modalidad_list_table')) {
             $edit_btn = "<a class=\"btn btn-warning btn-xs\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Editar\" href = \"" . base_url("admin/modalidad/edit/") . $a->id . "\" >
                                 <span class=\"glyphicon glyphicon-edit\"></span>
                             </a>";
-            if ($a->activo !== "0" && $a->activo !== "0") {
+            if ($a->activo !== "0") {
                 $option_btn = "<button class=\"btn btn-danger btn-xs remove\" data-toggle=\"tooltip\" data-placement=\"top\" title=\"Deshabilitar\" id=\"$a->id\" >
                                 <span class=\"glyphicon glyphicon-remove\"></span>
                             </button>";
